@@ -10,6 +10,6 @@ public class Background {
     @Given("me encuentro en sitio web")
     public void meEncuentroEnSitioWeb() throws InterruptedException {
         Thread.sleep(2000);
-        indexPage.contactanos();
+        indexPage.validarIngresoIndex();
     }
 }
