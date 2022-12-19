@@ -20,7 +20,7 @@ public class BaseRunner {
 
     @Before
     public void levantarDriver(){
-        DriverManager.setUpDriver(Navegador.Chrome,"URL");
+        DriverManager.setUpDriver(Navegador.Chrome,"https://dibrsite1.netlify.app/");
     }
     @After
     public void closeDriver(){
