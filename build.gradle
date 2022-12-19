@@ -16,6 +16,8 @@ dependencies {
     //Selenium
     testImplementation 'org.seleniumhq.selenium:selenium-java:4.7.0'
     //Healenium
+    testImplementation 'com.fasterxml.jackson:jackson-bom:2.14.1'
+    testImplementation 'com.fasterxml.jackson.core:jackson-databind:2.14.1'
     testImplementation 'com.epam.healenium:healenium-web:3.3.1'
     //WebDriverManager
     testImplementation 'io.github.bonigarcia:webdrivermanager:5.3.1'

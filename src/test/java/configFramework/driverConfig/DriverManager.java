@@ -17,14 +17,17 @@ public class DriverManager {
                 WebDriverManager.chromedriver().setup();
                 delegate = new ChromeDriver();
                 driver = SelfHealingDriver.create(delegate);
+                break;
             case Firefox:
                 WebDriverManager.firefoxdriver().setup();
                 delegate = new FirefoxDriver();
                 driver = SelfHealingDriver.create(delegate);
+                break;
             case Edge:
                 WebDriverManager.edgedriver().setup();
                 delegate = new EdgeDriver();
                 driver = SelfHealingDriver.create(delegate);
+                break;
         }
         driver.manage().deleteAllCookies();
         driver.manage().window().maximize();
