@@ -7,7 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class driverManager {
+public class DriverManager {
     private static SelfHealingDriver driver;
     private static WebDriver delegate;
 
@@ -29,6 +29,9 @@ public class driverManager {
         driver.manage().deleteAllCookies();
         driver.manage().window().maximize();
         driver.get(URL);
+    }
+    public static SelfHealingDriver getDriver(){
+        return driver;
     }
 
 }
