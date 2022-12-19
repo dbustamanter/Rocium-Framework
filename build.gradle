@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id "com.epam.healenium.hlm-report" version "1.1.2"
 }
 
 group 'org.example'
@@ -13,9 +14,9 @@ dependencies {
     //JUnit
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.1'
-    implementation group: 'org.junit.vintage', name: 'junit-vintage-engine', version: '5.9.1'
+    testImplementation group: 'org.junit.vintage', name: 'junit-vintage-engine', version: '5.9.1'
     //Selenium
-    implementation 'org.seleniumhq.selenium:selenium-java:4.6.0'
+    testImplementation 'org.seleniumhq.selenium:selenium-java:4.6.0'
     //Healenium
     testImplementation 'com.fasterxml.jackson:jackson-bom:2.14.1'
     testImplementation 'com.fasterxml.jackson.core:jackson-databind:2.14.1'
@@ -23,14 +24,16 @@ dependencies {
     //WebDriverManager
     testImplementation 'io.github.bonigarcia:webdrivermanager:5.3.1'
     //Cucumber
-    implementation 'io.cucumber:cucumber-java:7.9.0'
+    testImplementation 'io.cucumber:cucumber-java:7.9.0'
     testImplementation 'io.cucumber:cucumber-junit:7.9.0'
     testImplementation group: 'io.cucumber', name: 'cucumber-picocontainer', version: '7.9.0'
     //Extent Reports
     testImplementation 'com.aventstack:extentreports:5.0.9'
-    implementation group: 'tech.grasshopper', name: 'extentreports-cucumber7-adapter', version: '1.9.2'
+    testImplementation group: 'tech.grasshopper', name: 'extentreports-cucumber7-adapter', version: '1.9.2'
 }
 
 test {
     useJUnitPlatform()
 }
+
+
