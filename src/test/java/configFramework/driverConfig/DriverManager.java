@@ -36,5 +36,9 @@ public class DriverManager {
     public static SelfHealingDriver getDriver(){
         return driver;
     }
+    public static WebDriver getDelegate(){return delegate;}
 
+    /*public static WebDriver getScreenShot(){
+        return
+    }*/
 }
