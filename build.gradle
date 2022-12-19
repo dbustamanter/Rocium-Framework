@@ -56,7 +56,6 @@ task runWithCucumber() {
             args = [
                     '--threads', '1',
                     '--plugin', 'pretty' ,
-                    '--plugin', 'json:src/test/resources/output/report/Cucumber.json',
                     '--plugin', 'com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:',
                     '--glue', 'stepDefinition',
                     'src/test/resources/features',
