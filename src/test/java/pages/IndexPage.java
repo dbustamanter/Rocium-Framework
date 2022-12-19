@@ -2,6 +2,8 @@ package pages;
 
 
 import configFramework.driverConfig.DriverManager;
+import configFramework.util.MetodosGenericos;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,18 +18,27 @@ public class IndexPage {
     }
 
 
-    @FindBy(xpath = "")
-    WebElement logo;
+    @FindBy(xpath = "//h2[@class=\"fw-300 centrar-texto\" and contains(text(),\"Venta\")]")
+    WebElement tituloSeccionVentas;
 
-    @FindBy(xpath = "")
-    WebElement barraNav;
+    @FindBy(xpath = "//div[@class=\"contenedor-anuncios\"]")
+    WebElement contenedorAnuncios;
 
-    @FindBy(xpath = "")
-    WebElement contactanosBtn;
+    @FindBy(xpath = "//a[@class=\"boton boton-verde d-block\"]")
+    WebElement btnVerTodas;
 
 
-    public void contactanos() {
-        System.out.println("click button contactanos");
+    public void validarIngresoIndex() {
+        System.out.println("Validando ingreso al index");
+        Assertions.assertEquals("Bienes Raices",driver.getTitle());
+    }
+
+    public void moverASeccionCasasYDeptos(){
+        MetodosGenericos.mostrarElemento(tituloSeccionVentas);
+    }
+
+    public void verTodasLasPropiedades(){
+        btnVerTodas.click();
     }
 
 
