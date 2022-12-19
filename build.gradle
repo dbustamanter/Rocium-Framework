@@ -10,8 +10,20 @@ repositories {
 }
 
 dependencies {
+    //JUnit
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    //Selenium
+    testImplementation 'org.seleniumhq.selenium:selenium-java:4.7.0'
+    //Healenium
+    testImplementation 'com.epam.healenium:healenium-web:3.3.1'
+    //WebDriverManager
+    testImplementation 'io.github.bonigarcia:webdrivermanager:5.3.1'
+    //Cucumber
+    testImplementation 'io.cucumber:cucumber-java:7.5.0'
+    testImplementation 'io.cucumber:cucumber-junit:7.5.0'
+    //Extent Reports
+    testImplementation 'com.aventstack:extentreports:5.0.9'
 }
 
 test {
