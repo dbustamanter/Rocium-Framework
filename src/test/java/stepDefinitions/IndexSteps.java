@@ -9,11 +9,12 @@ public class IndexSteps {
     IndexPage indexPage = new IndexPage();
 
     @When("al llegar a sección casas y departamentos en venta")
-    public void seccionCasasYDepartamentos(){
-        indexPage.contactanos();
+    public void seccionCasasYDepartamentos() {
+        indexPage.moverASeccionCasasYDeptos();
     }
+
     @And("clickear opcion ver todas")
-    public void clickearOpcionVerTodas(){
-        indexPage.contactanos();
+    public void clickearOpcionVerTodas() {
+        indexPage.verTodasLasPropiedades();
     }
 }
