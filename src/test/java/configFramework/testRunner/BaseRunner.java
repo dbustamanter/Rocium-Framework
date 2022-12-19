@@ -4,17 +4,13 @@ package configFramework.testRunner;
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
-import steps.Hooks;
+import stepDefinitions.Hooks;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(glue = "steps",
+@CucumberOptions(glue = "stepDefinitions",
         features = "src/test/resources/features",
-        plugin = {"pretty"
-                ,"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
-                ,"json:results/cucumber.json"
-                ,"junit:results/cucumber.xml"},
-        tags = "@google",
-        monochrome = true)
+        plugin = {"pretty","com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
+        tags = "@dibrsitioweb")
 
 public class BaseRunner extends Hooks{
 

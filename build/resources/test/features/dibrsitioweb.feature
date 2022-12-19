@@ -1,7 +1,7 @@
 Feature: Plan de prueba para sitio web
   Background:
     Given me encuentro en sitio web
-    @google
+    @dibrsitioweb
     Scenario: Verificar funcionamiento de sección "ver todas"
       When al llegar a seccion casas y departamentos en venta
       And clickear opcion ver todas

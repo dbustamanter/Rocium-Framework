@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.ArrayList;
 
 public class MetodosGenericos {
 
@@ -56,7 +57,23 @@ public class MetodosGenericos {
             Assert.fail("Se genera el siguiente error, al intentar verificar sección: " + e.getMessage());
         }
     }
+    public static void cambiarPestana(int pantalla) {
+        try {
+            ArrayList<String> tabs = new ArrayList<String>(DriverManager.getDriver().getWindowHandles());
+            DriverManager.getDriver().switchTo().window(tabs.get(pantalla));
+        } catch (Exception e) {
+            Assert.fail();
+        }
+    }
 
-
+    public static boolean validarEstadoElemento(WebElement element) {
+        boolean estado = false;
+        try {
+            estado = element.isEnabled();
+        } catch (Exception e) {
+            Assert.fail();
+        }
+        return estado;
+    }
 
 }

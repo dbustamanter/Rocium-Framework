@@ -38,7 +38,4 @@ public class DriverManager {
     }
     public static WebDriver getDelegate(){return delegate;}
 
-    /*public static WebDriver getScreenShot(){
-        return
-    }*/
 }
