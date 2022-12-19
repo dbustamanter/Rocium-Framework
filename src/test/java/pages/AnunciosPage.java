@@ -1,6 +1,7 @@
 package pages;
 
 import configFramework.driverConfig.DriverManager;
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -25,5 +26,12 @@ public class AnunciosPage {
 
     public void contactanos() {
         System.out.println("click button contactanos");
+    }
+
+    public void verificacionListadoPropiedades(){
+        Assertions.assertEquals("https://dibrsite1.netlify.app/html/anuncios.html", driver.getCurrentUrl());
+    }
+    public void verificarPropiedades(){
+
     }
 }
