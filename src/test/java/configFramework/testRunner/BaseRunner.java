@@ -7,7 +7,7 @@ import org.junit.runner.RunWith;
 import steps.Hooks;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(glue = {"java.steps"},
+@CucumberOptions(glue = "steps",
         features = "src/test/resources/features",
         plugin = {"pretty"
                 ,"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"
