@@ -8,9 +8,6 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
-    maven{
-        url "https://plugins.gradle.org/m2/"
-    }
 }
 
 dependencies {
@@ -38,29 +35,5 @@ dependencies {
 test {
     useJUnitPlatform()
 }
-configurations {
-    cucumberRuntime {
-        extendsFrom testImplementation
-    }
-}
 
-
-def tags = (findProperty('tags') == null) ? 'not @Ignore' : findProperty('tags') + ' and not @Ignore'
-
-task runWithCucumber() {
-    dependsOn assemble, testClasses
-    doLast {
-        javaexec {
-            main = "io.cucumber.core.cli.Main"
-            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
-            args = [
-                    '--threads', '1',
-                    '--plugin', 'pretty' ,
-                    '--plugin', 'com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:',
-                    '--glue', 'stepDefinition',
-                    'src/test/resources/features',
-                    '--tags', "${tags}"]
-        }
-    }
-}
 
