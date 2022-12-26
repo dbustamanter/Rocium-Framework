@@ -1,6 +1,5 @@
 package pages;
 
-
 import configFramework.driverConfig.DriverManager;
 import configFramework.util.MetodosGenericos;
 import org.junit.jupiter.api.Assertions;
@@ -17,7 +16,6 @@ public class IndexPage {
         PageFactory.initElements(this.driver, this);
     }
 
-
     @FindBy(xpath = "//h2[@class=\"fw-300 centrar-texto\" and contains(text(),\"Venta\")]")
     WebElement tituloSeccionVentas;
 
@@ -27,19 +25,15 @@ public class IndexPage {
     @FindBy(xpath = "//a[@class=\"boton boton-verde d-block\"]")
     WebElement btnVerTodas;
 
-
     public void validarIngresoIndex() {
         System.out.println("Validando ingreso al index");
-        Assertions.assertEquals("Bienes Raices",driver.getTitle());
+        Assertions.assertEquals("Bienes Raices", driver.getTitle());
     }
-
-    public void moverASeccionCasasYDeptos(){
+    public void moverASeccionCasasYDeptos() {
         MetodosGenericos.mostrarElemento(tituloSeccionVentas);
     }
-
-    public void verTodasLasPropiedades(){
+    public void verTodasLasPropiedades() {
         btnVerTodas.click();
     }
-
 
 }

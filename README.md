@@ -18,14 +18,20 @@
 
 ### Primeros Pasos:
 Alojar repositorio en carpeta deseada:  
-`git clone https://github.com/dbustamanter/Rocium-Framework.git`  
+```
+git clone https://github.com/dbustamanter/Rocium-Framework.git
+```  
   
 Inicializar contenedores docker desde carpeta /Rocium_Framework/infra/  
-`docker-compose up -d`
+```
+docker-compose up -d
+```
 
 ### Quick-Start:
 Desde carpeta /Rocium_Framework ejecutar:  
-`gradle test`
+``` 
+gradle test
+```
 
 ### Estructura de Proyecto:
 #### Patron de diseño POM:  
@@ -43,5 +49,32 @@ Desde carpeta /Rocium_Framework ejecutar:
 
 #### Reportes: 
 :bar_chart: results: Carpeta relativa a resultados asociados a ejecución de casos de prueba.
+
+#### Configuración de framework:  
+:globe_with_meridians: Configuración navegador de ejecución: :file_folder: /test/java/stepDefinitions/Hooks.java - public void SetupDriver()  
+```
+@Before
+public void setUpDriver(Scenario scenario) {
+this.scenario = scenario;
+DriverManager.setUpDriver(Navegador.Chrome,"URL");  
+}
+```    
+
+:wrench: Cabecera genérico de clases tipo pages (Instancia WebDriver más Constructor Clase):
+```  
+    private WebDriver driver;
+    public clasePage() {
+        this.driver = DriverManager.getDriver();
+        PageFactory.initElements(this.driver, this);
+    }
+```  
+
+:mag: Formato Localizadores:
+```
+@FindBy (xpath = "rutaXpathParaElementoWeb")
+WebElement nombreElemento; 
+```  
+
+
 
 
