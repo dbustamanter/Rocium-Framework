@@ -60,7 +60,7 @@ DriverManager.setUpDriver(Navegador.Chrome,"URL");
 }
 ```    
 
-:wrench: Cabecera genérico de clases tipo pages (Instancia WebDriver más Constructor Clase):
+:wrench: Cabecera genérica de clases tipo pages (Instancia WebDriver más Constructor Clase):
 ```  
     private WebDriver driver;
     public clasePage() {
