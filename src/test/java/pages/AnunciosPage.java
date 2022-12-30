@@ -28,11 +28,13 @@ public class AnunciosPage {
         Assertions.assertEquals("https://dibrsite1.netlify.app/html/anuncios.html", driver.getCurrentUrl());
     }
     public void verificarPropiedades(){
-       for (WebElement c : anuncios){
-           c.click();
-           Assertions.assertEquals("Casa en Venta frente al Bosque",tituloCasaVenta.getAttribute("innerHTML"));
-           driver.navigate().back();
-       }
+        for (int i=0;i<anuncios.size();i++){
+            WebElement aux = anuncios.get(i);
+            aux.click();
+            Assertions.assertEquals("Casa en Venta frente al Bosque",tituloCasaVenta.getAttribute("innerHTML"));
+            driver.navigate().back();
+            driver.navigate().refresh();
+        }
 
     }
 }
