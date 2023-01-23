@@ -1,6 +1,12 @@
-plugins {
-    id 'java'
-    id "com.epam.healenium.hlm-report" version "1.1.2"
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "com.epam.healenium:hlm-report:1.1.2"
+    }
 }
 
 group 'org.example'
@@ -8,7 +14,13 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    maven {
+        url "https://plugins.gradle.org/m2/"
+    }
 }
+
+apply plugin: "java"
+apply plugin: "com.epam.healenium.hlm-report"
 
 dependencies {
     //JUnit
@@ -33,7 +45,36 @@ dependencies {
 }
 
 test {
+    jvmArgs '--enable-preview'
     useJUnitPlatform()
 }
+configurations {
+    cucumberRuntime {
+        extendsFrom testImplementation
+    }
+}
+
+
+def tags = (findProperty('tags') == null) ? 'not @Ignore' : findProperty('tags') + ' and not @Ignore'
+
+task runWithCucumber() {
+    dependsOn assemble, testClasses, initReport
+    finalizedBy buildReport
+    doLast {
+        javaexec {
+            main = "io.cucumber.core.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = [
+                    '--threads', '1',
+                    '--plugin', 'pretty' ,
+                    '--plugin', 'json:src/test/resources/output/report/Cucumber.json',
+                    '--plugin', 'com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:',
+                    '--glue', 'stepDefinitions',
+                    'src/test/resources/features',
+                    '--tags', "${tags}"]
+        }
+    }
+}
+
 
 
