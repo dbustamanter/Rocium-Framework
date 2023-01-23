@@ -1,0 +1,75 @@
+passColor: 05a119
+failColor: ff3d3d
+skipColor: efca08
+displayFeature: true
+displayScenario: true
+displayDetailed: true
+displayAttached: true
+displayExpanded: false
+
+dashboardConfig:
+  title: Reporte Rocium-Framework
+  dataBackgroundColor: 003DA5
+  titleColor: FF0000
+  dateColor: 969696
+  timeColor: 000000
+  dial:
+    featureRanges: 60 95
+    scenarioRanges: 70 90
+    stepRanges: 75 85
+    badColor: ff3d3d
+    averageColor: efca08
+    goodColor: 05a119
+
+summaryConfig:
+  totalColor: FF0000
+  durationColor: FF0000
+
+tagConfig:
+  totalColor: FF0000
+
+featureConfig:
+  totalColor: FF0000
+  durationColor: FF0000
+
+scenarioConfig:
+  totalColor: FF0000
+  durationColor: FF0000
+
+detailedFeatureConfig:
+  featureNameColor: 1c6e8c
+  startEndTimeColor: 0
+  tagColor: 404040
+  dataHeaderColor: FFFFFF
+  dataBackgroundColor: 404040
+  totalColor: a6a6ff
+  durationColor: FFFFFF
+  durationBackgroundColor: 404040
+
+detailedScenarioConfig:
+  featureNameColor: C0C0C0
+  scenarioNameColor: 76A8BA
+  startEndTimeColor: 0
+  tagColor: 404040
+  dataHeaderColor: FFFFFF
+  dataBackgroundColor: 404040
+  totalColor: a6a6ff
+  durationColor: FFFFFF
+  durationBackgroundColor: 404040
+  stepChartBarColor: 7f32a8
+
+detailedStepHookConfig:
+  stepTextColor: 0000FF
+  stepBackgroundColor: FFFFFF
+  hookTextColor: 00FF00
+  hookBackgroundColor: FFFFFF
+  durationColor: FF0000
+  errorMsgColor: 000000
+  logMsgColor: 000000
+  #skipHooks: true
+  #skipScenarioHooks: false
+  #skipStepHooks: false
+  #skipScenarioBeforeHooks: false
+  #skipScenarioAfterHooks: false
+  #skipStepBeforeHooks: false
+  #skipStepAfterHooks: false

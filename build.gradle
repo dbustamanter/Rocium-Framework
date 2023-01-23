@@ -1,5 +1,12 @@
-plugins {
-    id 'java'
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath "com.epam.healenium:hlm-report:1.1.2"
+    }
 }
 
 group 'org.example'
@@ -7,13 +14,67 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    maven {
+        url "https://plugins.gradle.org/m2/"
+    }
 }
 
+apply plugin: "java"
+apply plugin: "com.epam.healenium.hlm-report"
+
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    //JUnit
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.1'
+    testImplementation group: 'org.junit.vintage', name: 'junit-vintage-engine', version: '5.9.1'
+    //Selenium
+    testImplementation 'org.seleniumhq.selenium:selenium-java:4.6.0'
+    //Healenium
+    testImplementation 'com.fasterxml.jackson:jackson-bom:2.14.1'
+    testImplementation 'com.fasterxml.jackson.core:jackson-databind:2.14.1'
+    testImplementation 'com.epam.healenium:healenium-web:3.3.1'
+    //WebDriverManager
+    testImplementation 'io.github.bonigarcia:webdrivermanager:5.3.1'
+    //Cucumber
+    testImplementation 'io.cucumber:cucumber-java:7.9.0'
+    testImplementation 'io.cucumber:cucumber-junit:7.9.0'
+    testImplementation group: 'io.cucumber', name: 'cucumber-picocontainer', version: '7.9.0'
+    //Extent Reports
+    testImplementation 'com.aventstack:extentreports:5.0.9'
+    testImplementation group: 'tech.grasshopper', name: 'extentreports-cucumber7-adapter', version: '1.9.2'
 }
 
 test {
+    jvmArgs '--enable-preview'
     useJUnitPlatform()
 }
+configurations {
+    cucumberRuntime {
+        extendsFrom testImplementation
+    }
+}
+
+
+def tags = (findProperty('tags') == null) ? 'not @Ignore' : findProperty('tags') + ' and not @Ignore'
+
+task runWithCucumber() {
+    dependsOn assemble, testClasses, initReport
+    finalizedBy buildReport
+    doLast {
+        javaexec {
+            main = "io.cucumber.core.cli.Main"
+            classpath = configurations.cucumberRuntime + sourceSets.main.output + sourceSets.test.output
+            args = [
+                    '--threads', '1',
+                    '--plugin', 'pretty' ,
+                    '--plugin', 'json:src/test/resources/output/report/Cucumber.json',
+                    '--plugin', 'com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:',
+                    '--glue', 'stepDefinitions',
+                    'src/test/resources/features',
+                    '--tags', "${tags}"]
+        }
+    }
+}
+
+
+
